@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
                     agent.destination = hit.point;
                 }
             }
-            else
+            /*else
             {
                 RaycastHit hit;
                 if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 200))
@@ -43,15 +43,17 @@ public class PlayerMove : MonoBehaviour
                     GameObject newBullet = Instantiate(bulletPrefab, spawnPoint.position, transform.rotation);
                     newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 200);
                 }
-            }
+            }*/
         }
     }
+
     void OnTriggerEnter(Collider other)
     {
         print(other.gameObject.name);
         if (other.gameObject.CompareTag("Key"))
         {
             Destroy(other.gameObject);
+            
             PublicVars.hasKey = true;
         }
     }
