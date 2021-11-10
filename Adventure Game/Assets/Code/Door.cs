@@ -13,12 +13,12 @@ public class Door : MonoBehaviour
         {
             if (!locked)
             {
-                SceneManager.LoadScene(levelToLoad);
+                Destroy(this.gameObject);
             }
             else if (PublicVars.hasKey)
             {
                 PublicVars.hasKey = false;
-                SceneManager.LoadScene(levelToLoad);
+                Destroy(this.gameObject);
             }
         }
     }
