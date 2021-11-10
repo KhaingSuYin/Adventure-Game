@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         mainCam = Camera.main;
+        //agent.destination = new Vector3(PublicVars.posX, PublicVars.posY, PublicVars.posZ);
     }
 
     // Update is called once per frame
@@ -22,28 +24,11 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            startTime = Time.time;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            if (Time.time - startTime < .2f)
+            RaycastHit hit;
+            if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 200))
             {
-                RaycastHit hit;
-                if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 200))
-                {
-                    agent.destination = hit.point;
-                }
+                agent.destination = hit.point;
             }
-            /*else
-            {
-                RaycastHit hit;
-                if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 200))
-                {
-                    transform.LookAt(hit.point);
-                    GameObject newBullet = Instantiate(bulletPrefab, spawnPoint.position, transform.rotation);
-                    newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 200);
-                }
-            }*/
         }
     }
 
@@ -53,8 +38,11 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Key"))
         {
             Destroy(other.gameObject);
-            
             PublicVars.hasKey = true;
+            PublicVars.posX = agent.transform.position.x;
+            PublicVars.posY = agent.transform.position.y;
+            PublicVars.posZ = agent.transform.position.z;
+            SceneManager.LoadScene("Maze", LoadSceneMode.Single);
         }
     }
 }

@@ -9,8 +9,8 @@ public class NextLevel : MonoBehaviour
 	
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.CompareTag("Player")){
-			SceneManager.LoadScene("Level" + leveltoLoad);
+		if(other.CompareTag("Ball")){
+			SceneManager.LoadScene("Level3");
 		}
 	}
 }
