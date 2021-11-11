@@ -11,6 +11,9 @@ public class PlayerMove : MonoBehaviour
     NavMeshAgent agent;
     Camera mainCam;
     public GameObject[] keys;
+    public GUISkin guiSkin;
+    bool riddle = false;
+    Rect windowRect = new Rect(0, 0, 400, 380);
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -51,7 +54,26 @@ public class PlayerMove : MonoBehaviour
             PublicVars.posX = agent.transform.position.x;
             PublicVars.posY = agent.transform.position.y;
             PublicVars.posZ = agent.transform.position.z;
-            SceneManager.LoadScene("Maze"+ PublicVars.L3keys, LoadSceneMode.Single);
+            SceneManager.LoadScene("Maze" + PublicVars.L3keys, LoadSceneMode.Single);
         }
+        if (other.gameObject.CompareTag("Riddle"))
+        {
+            Destroy(other.gameObject);
+            riddle = true; 
+        }
+    }
+    void OnGUI()
+    {
+        if (riddle)
+        {
+            GUI.skin = guiSkin;
+            Rect windowRect = new Rect(Screen.width/4, Screen.height/4, Screen.width/2, Screen.height/2);
+            windowRect = GUI.Window(0, windowRect, DoMyWindow, "Solve the riddle");
+        }
+    }
+    void DoMyWindow(int windowID)
+    {
+        GUI.Label(new Rect(Screen.width /8, Screen.height / 6, Screen.width / 2, Screen.height / 2), "<<  This is the right way!");
+        GUI.Label(new Rect(Screen.width /8, Screen.height / 4, Screen.width / 2, Screen.height / 2 - 10), "This way is Right!     >>");
     }
 }
