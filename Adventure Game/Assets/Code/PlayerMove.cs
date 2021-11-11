@@ -16,7 +16,14 @@ public class PlayerMove : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         mainCam = Camera.main;
-        //agent.destination = new Vector3(PublicVars.posX, PublicVars.posY, PublicVars.posZ);
+        agent.transform.position = new Vector3(PublicVars.posX, PublicVars.posY, PublicVars.posZ);
+        if (PublicVars.L3keys > 0)
+        {
+            for (int i = 0; i < PublicVars.L3keys; ++i)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("Key" + i));
+            }
+        }
     }
 
     // Update is called once per frame

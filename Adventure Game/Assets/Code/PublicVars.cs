@@ -5,4 +5,5 @@ public static class PublicVars
     public static float posY = 0.7f;
     public static float posZ = 5.3f;
     public static bool paused = false;
+    public static int L3keys = 0;
 }

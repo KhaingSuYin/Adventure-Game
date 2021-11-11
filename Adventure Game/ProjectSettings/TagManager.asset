@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Key
   - Door
   - Bullet
+  - Riddle
+  - Key
   layers:
   - Default
   - TransparentFX
