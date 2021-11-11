@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class Cop : MonoBehaviour
 {
+    Vector3 startPos;
+    enum State
+    {
+        leftright,
+        updown,
+        random
+    };
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(NewPos());
+        startPos = transform.position;
+        StartCoroutine(NewPos(State.leftright));
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    IEnumerator NewPos()
+    IEnumerator NewPos(State state)
     {
         while (true)
         {
