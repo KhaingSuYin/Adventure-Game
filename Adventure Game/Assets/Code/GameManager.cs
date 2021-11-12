@@ -44,6 +44,14 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        string level = SceneManager.GetActiveScene().name;
+        if (level.Substring(0, 5) == "Level")
+        {
+            PublicVars.L1keys = 0;
+            PublicVars.L2keys = 0;
+            PublicVars.L3keys = 0;
+            PublicVars.position = new Vector3(32.5f, 0f, 5.5f);
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

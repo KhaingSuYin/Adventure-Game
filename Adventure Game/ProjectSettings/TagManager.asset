@@ -12,6 +12,10 @@ TagManager:
   - Key2
   - Key3
   - Vent
+  - Bullet
+  - Ground2
+  - Ground1
+  - Jump
   layers:
   - Default
   - TransparentFX

@@ -34,33 +34,33 @@ public class PlayerMove : MonoBehaviour
                 for (int i = 0; i < PublicVars.L3keys; ++i)
                 {
                     print(keys[i].name + "Destroyed");
-                    Destroy(keys[i]);
+                    DestroyImmediate(keys[i]);
                 }
             }
         }
-        if (SceneManager.GetActiveScene().name == "Level2")
+        else if (SceneManager.GetActiveScene().name == "Level2")
         {
             keys = GameObject.FindGameObjectsWithTag("Key2");
             keys = keys.OrderBy(p => p.name).ToArray();
             if (PublicVars.L2keys > 0)
             {
-                for (int i = 0; i < PublicVars.L3keys; ++i)
+                for (int i = 0; i < PublicVars.L2keys; ++i)
                 {
                     print(keys[i].name + "Destroyed");
-                    Destroy(keys[i]);
+                    DestroyImmediate(keys[i]);
                 }
             }
         }
-        if (SceneManager.GetActiveScene().name == "Level1")
+        else if (SceneManager.GetActiveScene().name == "Level1")
         {
             keys = GameObject.FindGameObjectsWithTag("Key");
             keys = keys.OrderBy(p => p.name).ToArray();
             if (PublicVars.L1keys > 0)
             {
-                for (int i = 0; i < PublicVars.L3keys; ++i)
+                for (int i = 0; i < PublicVars.L1keys; ++i)
                 {
                     print(keys[i].name + "Destroyed");
-                    Destroy(keys[i]);
+                    DestroyImmediate(keys[i]);
                 }
             }
         }
@@ -91,14 +91,6 @@ public class PlayerMove : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Key3"))
-        {
-            Destroy(other.gameObject);
-            PublicVars.L3keys++;
-            PublicVars.hasKey = true;
-            PublicVars.position = gameObject.transform.position;
-            SceneManager.LoadScene("Maze" + PublicVars.L3keys);
-        }
         if (other.gameObject.CompareTag("Key"))
         {
             Destroy(other.gameObject);
@@ -107,26 +99,34 @@ public class PlayerMove : MonoBehaviour
             PublicVars.position = gameObject.transform.position;
             SceneManager.LoadScene("Puzzle" + PublicVars.L1keys);
         }
-        if (other.gameObject.CompareTag("Key2"))
+        else if (other.gameObject.CompareTag("Key2"))
         {
             Destroy(other.gameObject);
             PublicVars.L2keys++;
             PublicVars.hasKey = true;
             PublicVars.position = gameObject.transform.position;
-            //SceneManager.LoadScene("Puzzle" + PublicVars.L2keys);
+            SceneManager.LoadScene("Maze" + (PublicVars.L2keys + 3));
         }
-        if (other.gameObject.CompareTag("Riddle"))
+        else if (other.gameObject.CompareTag("Key3"))
+        {
+            Destroy(other.gameObject);
+            PublicVars.L3keys++;
+            PublicVars.hasKey = true;
+            PublicVars.position = gameObject.transform.position;
+            SceneManager.LoadScene("Maze" + PublicVars.L3keys);
+        }
+        else if (other.gameObject.CompareTag("Riddle"))
         {
             Destroy(other.gameObject);
             riddle = true;
         }
-        if (other.gameObject.CompareTag("Alarm"))
+        else if (other.gameObject.CompareTag("Alarm"))
         {
             Destroy(other.gameObject);
             PublicVars.alarm = true;
             AM.ChangeBGM(alarm);
         }
-        if (other.gameObject.CompareTag("Vent"))
+        else if (other.gameObject.CompareTag("Vent"))
         {
             Destroy(other.gameObject);
             PublicVars.hidden = true;

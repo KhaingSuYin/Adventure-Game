@@ -7,30 +7,31 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     public string levelToLoad;
-    public bool locked = true;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!locked)
+            if (PublicVars.hasKey)
             {
-                if (levelToLoad != "")
-                {
-                    SceneManager.LoadScene("Level" + levelToLoad);
-                }
-                Destroy(this.gameObject);
-            }
-            else if (PublicVars.hasKey)
-            {
-                if (levelToLoad != "")
-                {
-                    SceneManager.LoadScene("Level" + levelToLoad);
-                }
                 PublicVars.hasKey = false;
-                Destroy(this.gameObject);
+                if (levelToLoad != "")
+                {
+                    switch (levelToLoad)
+                    {
+                        case "2":
+                        case "3":
+                            PublicVars.position = new Vector3(32.5f, 0f, 5.5f);
+                            SceneManager.LoadScene("Level" + levelToLoad);
+                            break;
+                        case "End":
+                            SceneManager.LoadScene("End");
+                            break;
+                    }
+                }
+                Destroy(gameObject);
             }
         }
-        
+
     }
 
     // Update is called once per frame
