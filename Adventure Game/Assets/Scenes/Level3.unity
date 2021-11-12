@@ -2355,7 +2355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439239393980121046, guid: 1e3974e3db8c48c41b2604d2478e7e9e, type: 3}
       propertyPath: m_TagString
-      value: Key
+      value: Key3
       objectReference: {fileID: 0}
     - target: {fileID: 2172049943489465098, guid: 1e3974e3db8c48c41b2604d2478e7e9e, type: 3}
       propertyPath: m_Materials.Array.size
@@ -2493,6 +2493,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_TagString
+      value: Vent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
@@ -3477,7 +3481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439239393980121046, guid: 1e3974e3db8c48c41b2604d2478e7e9e, type: 3}
       propertyPath: m_TagString
-      value: Key
+      value: Key3
       objectReference: {fileID: 0}
     - target: {fileID: 2172049943489465098, guid: 1e3974e3db8c48c41b2604d2478e7e9e, type: 3}
       propertyPath: m_Materials.Array.size
@@ -6049,6 +6053,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_TagString
+      value: Vent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921463756757831209, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921463756757831209, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
 --- !u!1001 &1322009635
@@ -6267,7 +6283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439239393980121046, guid: 1e3974e3db8c48c41b2604d2478e7e9e, type: 3}
       propertyPath: m_TagString
-      value: Key
+      value: Key3
       objectReference: {fileID: 0}
     - target: {fileID: 2172049943489465098, guid: 1e3974e3db8c48c41b2604d2478e7e9e, type: 3}
       propertyPath: m_Materials.Array.size

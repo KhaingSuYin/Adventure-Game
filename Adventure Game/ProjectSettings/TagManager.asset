@@ -9,6 +9,9 @@ TagManager:
   - Key
   - Ball
   - Alarm
+  - Key2
+  - Key3
+  - Vent
   layers:
   - Default
   - TransparentFX
