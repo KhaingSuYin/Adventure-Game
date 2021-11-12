@@ -14,8 +14,11 @@ public class PlayerMove : MonoBehaviour
     public GUISkin guiSkin;
     bool riddle = false;
     Rect windowRect = new Rect(0, 0, 400, 380);
+    private Animator anim;
+
     void Start()
     {
+        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         mainCam = Camera.main;
         agent.transform.position = new Vector3(PublicVars.posX, PublicVars.posY, PublicVars.posZ);
@@ -30,6 +33,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -38,8 +42,15 @@ public class PlayerMove : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 200))
             {
+                anim.SetBool("run", true);
                 agent.destination = hit.point;
             }
+        }
+
+        if ((agent.transform.position - agent.destination).magnitude < 0.1)
+        {
+            anim.SetBool("run", false);
+            agent.destination = agent.transform.position;
         }
     }
 
