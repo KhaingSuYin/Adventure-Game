@@ -8662,9 +8662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5c8f453bb9dbc4a9b3382cffeafd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alarm: {fileID: 0}
-  puzzle: {fileID: 0}
-  BGM: {fileID: 0}
+  alarm: {fileID: 8300000, guid: aa3bde47ab303af4fa8d1cfe59c6fedd, type: 3}
+  BGM: {fileID: 8300000, guid: 52b764d376647c04b9525a5e722f08cc, type: 3}
   keys: []
   guiSkin: {fileID: 11400000, guid: 9705c0e7595e14d42bcd9e476468d8d7, type: 2}
 --- !u!54 &2101407470

@@ -11,7 +11,6 @@ public class PlayerMove : MonoBehaviour
     NavMeshAgent agent;
     Camera mainCam;
     public AudioClip alarm;
-    public AudioClip puzzle;
     public AudioClip BGM;
     private AudioManager AM;
     public GameObject[] keys;
@@ -99,7 +98,6 @@ public class PlayerMove : MonoBehaviour
             PublicVars.hasKey = true;
             PublicVars.position = gameObject.transform.position;
             SceneManager.LoadScene("Maze" + PublicVars.L3keys);
-            AM.ChangeBGM(puzzle);
         }
         if (other.gameObject.CompareTag("Key"))
         {
@@ -108,7 +106,6 @@ public class PlayerMove : MonoBehaviour
             PublicVars.hasKey = true;
             PublicVars.position = gameObject.transform.position;
             SceneManager.LoadScene("Puzzle" + PublicVars.L1keys);
-            AM.ChangeBGM(puzzle);
         }
         if (other.gameObject.CompareTag("Key2"))
         {
@@ -116,7 +113,6 @@ public class PlayerMove : MonoBehaviour
             PublicVars.L2keys++;
             PublicVars.hasKey = true;
             PublicVars.position = gameObject.transform.position;
-            AM.ChangeBGM(puzzle);
             //SceneManager.LoadScene("Puzzle" + PublicVars.L2keys);
         }
         if (other.gameObject.CompareTag("Riddle"))
