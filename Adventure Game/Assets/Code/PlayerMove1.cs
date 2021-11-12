@@ -22,16 +22,17 @@ public class PlayerMove1 : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         mainCam = Camera.main;
-        agent.transform.position = new Vector3(PublicVars1.posX, PublicVars1.posY, PublicVars1.posZ);
         keys = GameObject.FindGameObjectsWithTag("Key");
         keys = keys.OrderBy(p => p.name).ToArray();
         if (PublicVars1.L3keys > 0)
         {
             for (int i = 0; i < PublicVars1.L3keys; ++i)
             {
+                print(keys[i].name + "Destroyed");
                 Destroy(keys[i]);
             }
         }
+        agent.Warp(PublicVars1.position);
     }
 
 
@@ -63,10 +64,8 @@ public class PlayerMove1 : MonoBehaviour
             Destroy(other.gameObject);
             PublicVars1.L3keys++;
             PublicVars1.hasKey = true;
-            PublicVars1.posX = agent.transform.position.x;
-            PublicVars1.posY = agent.transform.position.y;
-            PublicVars1.posZ = agent.transform.position.z;
-            SceneManager.LoadScene("Puzzle" + PublicVars1.L3keys, LoadSceneMode.Single);
+            PublicVars1.position = gameObject.transform.position;
+            SceneManager.LoadScene("Puzzle" + PublicVars1.L3keys);
         }
         if (other.gameObject.CompareTag("Riddle"))
         {

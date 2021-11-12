@@ -20,8 +20,11 @@ public class Door : MonoBehaviour
             {
                 PublicVars.hasKey = false;
                 Destroy(this.gameObject);
-                SceneManager.LoadScene("Level" + levelToLoad, LoadSceneMode.Single);
             }
+        }
+        if (levelToLoad != "")
+        {
+            SceneManager.LoadScene("Level" + levelToLoad);
         }
     }
 
