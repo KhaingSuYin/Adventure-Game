@@ -7,7 +7,7 @@ public class GUI_Demo : MonoBehaviour {
 	public GUISkin guiSkin;
 
 
-	Rect windowRect = new Rect (0, 0, 400, 380);
+	Rect windowRect = new Rect (0, 0, 400, 190);
 	bool toggleTxt = false;
 	string stringToEdit = "Text Label";	
 	string textToEdit = "TextBox:\nHello World\nI've got few lines...";
