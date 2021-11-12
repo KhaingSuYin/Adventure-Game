@@ -14,18 +14,23 @@ public class Door : MonoBehaviour
         {
             if (!locked)
             {
+                if (levelToLoad != "")
+                {
+                    SceneManager.LoadScene("Level" + levelToLoad);
+                }
                 Destroy(this.gameObject);
             }
             else if (PublicVars.hasKey)
             {
+                if (levelToLoad != "")
+                {
+                    SceneManager.LoadScene("Level" + levelToLoad);
+                }
                 PublicVars.hasKey = false;
                 Destroy(this.gameObject);
             }
         }
-        if (levelToLoad != "")
-        {
-            SceneManager.LoadScene("Level" + levelToLoad);
-        }
+        
     }
 
     // Update is called once per frame
