@@ -21,16 +21,18 @@ public class PlayerMove : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         mainCam = Camera.main;
-        agent.transform.position = new Vector3(PublicVars.posX, PublicVars.posY, PublicVars.posZ);
         keys = GameObject.FindGameObjectsWithTag("Key");
         keys = keys.OrderBy(p => p.name).ToArray();
         if (PublicVars.L3keys > 0)
         {
             for (int i = 0; i < PublicVars.L3keys; ++i)
             {
+                print(keys[i].name + "Destroyed");
                 Destroy(keys[i]);
             }
         }
+        print("Before Warp...");
+        agent.Warp(PublicVars.position);
     }
 
 
@@ -56,21 +58,18 @@ public class PlayerMove : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.name);
         if (other.gameObject.CompareTag("Key"))
         {
             Destroy(other.gameObject);
             PublicVars.L3keys++;
             PublicVars.hasKey = true;
-            PublicVars.posX = agent.transform.position.x;
-            PublicVars.posY = agent.transform.position.y;
-            PublicVars.posZ = agent.transform.position.z;
-            SceneManager.LoadScene("Maze" + PublicVars.L3keys, LoadSceneMode.Single);
+            PublicVars.position = gameObject.transform.position;
+            SceneManager.LoadScene("Maze" + PublicVars.L3keys);
         }
         if (other.gameObject.CompareTag("Riddle"))
         {
             Destroy(other.gameObject);
-            riddle = true; 
+            riddle = true;
         }
     }
     void OnGUI()
@@ -78,13 +77,13 @@ public class PlayerMove : MonoBehaviour
         if (riddle)
         {
             GUI.skin = guiSkin;
-            Rect windowRect = new Rect(Screen.width/4, Screen.height/4, Screen.width/2, Screen.height/2);
+            Rect windowRect = new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2);
             windowRect = GUI.Window(0, windowRect, DoMyWindow, "Solve the riddle");
         }
     }
     void DoMyWindow(int windowID)
     {
-        GUI.Label(new Rect(Screen.width /8, Screen.height / 6, Screen.width / 2, Screen.height / 2), "<<  This is the right way!");
-        GUI.Label(new Rect(Screen.width /8, Screen.height / 4, Screen.width / 2, Screen.height / 2 - 10), "This way is Right!     >>");
+        GUI.Label(new Rect(Screen.width / 8, Screen.height / 6, Screen.width / 2, Screen.height / 2), "<<  This is the right way!");
+        GUI.Label(new Rect(Screen.width / 8, Screen.height / 4, Screen.width / 2, Screen.height / 2 - 10), "This way is Right!     >>");
     }
 }
