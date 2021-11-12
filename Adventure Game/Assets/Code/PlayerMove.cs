@@ -10,6 +10,10 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     NavMeshAgent agent;
     Camera mainCam;
+    public AudioClip alarm;
+    public AudioClip puzzle;
+    public AudioClip BGM;
+    private AudioManager AM;
     public GameObject[] keys;
     public GUISkin guiSkin;
     bool riddle = false;
@@ -21,6 +25,7 @@ public class PlayerMove : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         mainCam = Camera.main;
+        AM = FindObjectOfType<AudioManager>();
         if (SceneManager.GetActiveScene().name == "Level3")
         {
             keys = GameObject.FindGameObjectsWithTag("Key3");
@@ -94,6 +99,7 @@ public class PlayerMove : MonoBehaviour
             PublicVars.hasKey = true;
             PublicVars.position = gameObject.transform.position;
             SceneManager.LoadScene("Maze" + PublicVars.L3keys);
+            AM.ChangeBGM(puzzle);
         }
         if (other.gameObject.CompareTag("Key"))
         {
@@ -102,6 +108,7 @@ public class PlayerMove : MonoBehaviour
             PublicVars.hasKey = true;
             PublicVars.position = gameObject.transform.position;
             SceneManager.LoadScene("Puzzle" + PublicVars.L1keys);
+            AM.ChangeBGM(puzzle);
         }
         if (other.gameObject.CompareTag("Key2"))
         {
@@ -109,6 +116,7 @@ public class PlayerMove : MonoBehaviour
             PublicVars.L2keys++;
             PublicVars.hasKey = true;
             PublicVars.position = gameObject.transform.position;
+            AM.ChangeBGM(puzzle);
             //SceneManager.LoadScene("Puzzle" + PublicVars.L2keys);
         }
         if (other.gameObject.CompareTag("Riddle"))
@@ -120,12 +128,14 @@ public class PlayerMove : MonoBehaviour
         {
             Destroy(other.gameObject);
             PublicVars.alarm = true;
+            AM.ChangeBGM(alarm);
         }
         if (other.gameObject.CompareTag("Vent"))
         {
             Destroy(other.gameObject);
             PublicVars.hidden = true;
             PublicVars.alarm = false;
+            AM.ChangeBGM(BGM);
         }
     }
     void OnGUI()
