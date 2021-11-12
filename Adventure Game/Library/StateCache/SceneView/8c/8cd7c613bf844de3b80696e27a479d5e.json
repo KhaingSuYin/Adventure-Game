@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"m_AlwaysRefresh":false,"showFog":true,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":false,"pivot":{"x":35.62968063354492,"y":23.128175735473634,"z":26.145885467529298},"rotation":{"x":-0.04006827995181084,"y":0.9555931687355042,"z":-0.24788333475589753,"w":-0.15440601110458375},"size":2.9794435501098635,"orthographic":false}
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"m_AlwaysRefresh":false,"showFog":true,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":false,"pivot":{"x":17.49654197692871,"y":19.76622200012207,"z":-0.11154866218566895},"rotation":{"x":0.1272413730621338,"y":0.8303133845329285,"z":-0.21140308678150178,"w":0.4997425079345703},"size":0.82587069272995,"orthographic":false}
+>>>>>>> 38e290e (bug fixes)
