@@ -85,7 +85,6 @@ public class PlayerMove : MonoBehaviour
         if ((agent.transform.position - agent.destination).magnitude < 0.1)
         {
             anim.SetBool("run", false);
-            agent.destination = agent.transform.position;
         }
     }
 
