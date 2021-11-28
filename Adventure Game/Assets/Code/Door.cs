@@ -18,10 +18,10 @@ public class Door : MonoBehaviour
                 {
                     switch (levelToLoad)
                     {
-                        case "2":
-                        case "3":
+                        case "Level2":
+                        case "Level3":
                             PublicVars.position = new Vector3(32.5f, 0f, 5.5f);
-                            SceneManager.LoadScene("Level" + levelToLoad);
+                            SceneManager.LoadScene(levelToLoad);
                             break;
                         case "End":
                             SceneManager.LoadScene("End");

@@ -95,7 +95,8 @@ public class PlayerMove : MonoBehaviour
             Destroy(other.gameObject);
             PublicVars.L1keys++;
             PublicVars.hasKey = true;
-            PublicVars.position = gameObject.transform.position;
+            PublicVars.position = transform.position;
+            PublicVars.position.y = 0;
             SceneManager.LoadScene("Puzzle" + PublicVars.L1keys);
         }
         else if (other.gameObject.CompareTag("Key2"))
@@ -103,7 +104,8 @@ public class PlayerMove : MonoBehaviour
             Destroy(other.gameObject);
             PublicVars.L2keys++;
             PublicVars.hasKey = true;
-            PublicVars.position = gameObject.transform.position;
+            PublicVars.position = transform.position;
+            PublicVars.position.y = 0;
             SceneManager.LoadScene("Maze" + (PublicVars.L2keys + 3));
         }
         else if (other.gameObject.CompareTag("Key3"))
@@ -111,7 +113,8 @@ public class PlayerMove : MonoBehaviour
             Destroy(other.gameObject);
             PublicVars.L3keys++;
             PublicVars.hasKey = true;
-            PublicVars.position = gameObject.transform.position;
+            PublicVars.position = transform.position;
+            PublicVars.position.y = 0;
             SceneManager.LoadScene("Maze" + PublicVars.L3keys);
         }
         else if (other.gameObject.CompareTag("Riddle"))

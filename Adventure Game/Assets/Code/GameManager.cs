@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        Resume();
+        string level = SceneManager.GetActiveScene().name;
+        if (level != "Start" && level != "End")
+        {
+            Resume();
+        }
 
 #if UNITY_WEBGL
         quitBtn.gameObject.SetActive(false);
@@ -18,19 +22,23 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        string level = SceneManager.GetActiveScene().name;
+        if (level != "Start" && level != "End")
         {
-            if (PublicVars.paused)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                pauseMenu.SetActive(false);
-                PublicVars.paused = false;
-                Time.timeScale = 1;
-            }
-            else
-            {
-                pauseMenu.SetActive(true);
-                PublicVars.paused = true;
-                Time.timeScale = 0;
+                if (PublicVars.paused)
+                {
+                    pauseMenu.SetActive(false);
+                    PublicVars.paused = false;
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    pauseMenu.SetActive(true);
+                    PublicVars.paused = true;
+                    Time.timeScale = 0;
+                }
             }
         }
     }
@@ -53,6 +61,15 @@ public class GameManager : MonoBehaviour
             PublicVars.position = new Vector3(32.5f, 0f, 5.5f);
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GameStart()
+    {
+        PublicVars.L1keys = 0;
+        PublicVars.L2keys = 0;
+        PublicVars.L3keys = 0;
+        PublicVars.position = new Vector3(32.5f, 0f, 5.5f);
+        SceneManager.LoadScene("Level1");
     }
 
     public void Quit()
